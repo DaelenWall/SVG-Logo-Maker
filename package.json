@@ -1,0 +1,27 @@
+{
+  "name": "svg-logo-maker",
+  "version": "1.0.0",
+  "description": "UConn Bootcamp Chapter 10 challenge",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaelenWall/SVG-Logo-Maker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaelenWall/SVG-Logo-Maker/issues"
+  },
+  "homepage": "https://github.com/DaelenWall/SVG-Logo-Maker#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jest": "^29.5.0"
+  }
+}
