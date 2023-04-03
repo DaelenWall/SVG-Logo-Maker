@@ -4,8 +4,8 @@ const inquirer = require('fs');
 // destructured shape elements
 const {Circle, Square, Triangle} = require('./lib/shapes');
 
-const promptUser = () => {
-    return inquirer.prompt([
+// inquirer prompts
+const promptUser = [
       {
         type: 'list',
         name: 'shape',
@@ -27,14 +27,16 @@ const promptUser = () => {
         name: 'text-color',
         message: 'What color would you like the text to be?',
       },
-    ]);
-  };
+    ];
 
-  const init = () => {
-    promptUser()
-      .then((answers) => fs.writeFileSync('logo.svg', generateSVG(answers)))
-      .then(() => console.log('Successfully wrote to logo.svg'))
-      .catch((err) => console.error(err));
-  };
-  
-  init();
+  const fileData = (filename, data) => {
+    console.log("Creating your logo!");
+    fs.writeFile(filename, data, function (err) {
+        if (err) {
+            console.log(err);
+        }
+        console.log("Logo created!");
+    })
+  }
+
+  fileData();
