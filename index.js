@@ -29,14 +29,33 @@ const promptUser = [
       },
     ];
 
-  const fileData = (filename, data) => {
+// write SVG function
+  const writeSVG = (filename, data) => {
     console.log("Creating your logo!");
     fs.writeFile(filename, data, function (err) {
         if (err) {
             console.log(err);
         }
-        console.log("Logo created!");
+        console.log("logo.svg created!");
     })
   }
+  
+// object text/shape elements
+class renderSVG{
+  constructor() {
+    this.userText = ''
+    this.userShape = ''
+  };
+  render() {
+    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> ${this.userText} ${this.userShape} </svg>`
+  };
+  newText(text, color) {
+    this.userText = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}"> ${text}SVG</text>`
+  };
+  newShape(shape) {
+    this.userShape = shape.render();
+  };
 
-  fileData();
+};
+
+  
