@@ -30,8 +30,8 @@ const promptUser = [
 ];
 
 // write SVG function
-const writeSVG = (filename, data) => {
-  fs.writeFile(filename, data, function (err) {
+const writeSVG = (file, data) => {
+  fs.writeFile(file, data, function (err) {
     if (err) {
       console.log(err);
     }
@@ -46,7 +46,7 @@ class renderSVG {
     this.userShape = ''
   };
   render() {
-    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> ${this.userText} ${this.userShape} </svg>`
+    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg"> ${this.userShape}  ${this.userText}</svg>`
   };
   newText(text, color) {
     this.userText = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}"> ${text}</text>`
@@ -64,20 +64,6 @@ async function init() {
   const answers = await inquirer.prompt(promptUser);
 
   // parameters for user answers
-
-  //text
-  let textChoice = "";
-  if (answers.text.length > 0 && answers.text.length < 4) {
-    textChoice = answers.text;
-    console.log(`Text content: ${textChoice}`);
-  } else {
-    console.log("[1-3 characters only]");
-    return;
-  }
-
-  //text color
-  textColorChoice = answers["text-color"];
-  console.log(`Text color: ${textColorChoice}`);
 
   //shape
   shape = answers.shape;
@@ -101,19 +87,31 @@ async function init() {
   };
 
   //shape color
-  shapeColor = answers["shape"];
+  shapeColor = answers["shape-color"];
   console.log(`Shape color: ${shapeColor}`);
   shapeChoice.setColor(shapeColor);
-  
-
-  //svg render
-    const newSvg = new renderSVG();
-    newSvg.newText(textChoice, textColorChoice);
-    newSvg.newShape(shapeChoice, shapeColor)
-
-    svgRender = newSvg.render();
-
-    writeSVG(svgFile, svgRender);
+  //text
+  let textChoice = "";
+  if (answers.text.length > 0 && answers.text.length < 4) {
+    textChoice = answers.text;
+    console.log(`Text content: ${textChoice}`);
+  } else {
+    console.log("[1-3 characters only]");
+    return;
   }
 
-  init();
+  //text color
+  textColorChoice = answers["text-color"];
+  console.log(`Text color: ${textColorChoice}`);
+  
+  //svg render
+  const newSvg = new renderSVG();
+  newSvg.newText(textChoice, textColorChoice);
+  newSvg.newShape(shapeChoice, shapeColor)
+
+  svgRender = newSvg.render();
+
+  writeSVG(svgFile, svgRender);
+}
+
+init();
