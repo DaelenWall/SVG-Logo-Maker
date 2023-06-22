@@ -40,7 +40,10 @@ In this chapter 10 challenge I took my knowledge of OOP and used it to create an
 
 
 ## Walkthrough
-![SVG Logo Maker Walkthrough.webm](https://user-images.githubusercontent.com/122398507/232264096-04042692-6b83-41da-8e87-f62ef13bae4d.webm)
+[SVG Logo Maker Walkthrough](https://user-images.githubusercontent.com/122398507/232264096-04042692-6b83-41da-8e87-f62ef13bae4d.webm)
+
+[SVG Shapes Tests](https://github.com/DaelenWall/SVG-Logo-Maker/assets/122398507/699da755-08d8-4d6b-8d9d-ae48cb924e75)
+
 
 
 ## Conclusion
